@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <category-checkbox
+      v-for="(item, index) in categories"
+      :key="index"
+      :category="item"
+    />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import categories from './categories.json';
+import CategoryCheckbox from '@/components/CategoryCheckbox.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CategoryCheckbox
+  },
+  data() {
+    return {
+      categories: categories 
+    };
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
